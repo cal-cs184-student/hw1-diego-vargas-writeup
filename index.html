@@ -227,8 +227,54 @@ while bilinear filtering smooths variation inside the texture itself.
 
 </div>
 		<h2>Task 6: "Level Sampling" with mipmaps for texture mapping</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+<p>
+For Task 6, I implemented mipmap level sampling. The texture coordinate
+derivatives are estimated in the x and y directions, and these derivatives
+are used to determine the size of the texture footprint. From this footprint,
+I compute an appropriate mipmap level.
+</p>
+
+<p>
+With level-zero sampling, the renderer always uses the highest-resolution
+texture level. Nearest-level sampling chooses the closest mipmap level based
+on the computed footprint. Linear level sampling blends between the two
+closest mipmap levels, which produces smoother transitions between levels.
+</p>
+
+<p>
+The images below compare the three level-sampling methods while keeping
+nearest pixel sampling and a supersample rate of 1.
+</p>
+
+<figure>
+  <img src="assets/screenshot_9-25_16-43-29.png" style="width:70%">
+  <figcaption>
+    Level-zero sampling with nearest pixel sampling and sample rate 1.
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="assets/screenshot_9-25_16-45-6.png" style="width:70%">
+  <figcaption>
+    Nearest mipmap-level sampling with nearest pixel sampling and sample rate 1.
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="assets/screenshot_9-25_16-46-36.png" style="width:70%">
+  <figcaption>
+    Linear mipmap-level interpolation with nearest pixel sampling and sample rate 1.
+  </figcaption>
+</figure>
+
+<p>
+Level-zero sampling preserves the most detail but can show more aliasing when
+the texture is minified. Nearest-level sampling reduces this aliasing by using
+a lower-resolution mipmap when appropriate. Linear level sampling further
+smooths the transition between mipmap levels by interpolating between adjacent
+levels.
+</p>
 		<h2>(Optional) Task 7: Extra Credit - Draw Something Creative!</h2>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 

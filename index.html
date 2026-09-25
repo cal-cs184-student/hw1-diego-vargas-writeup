@@ -58,8 +58,29 @@ converted into pixels on the screen.
 </p>
 			
 		<h2>Task 1: Drawing Single-Color Triangles</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+<p>
+For Task 1, I implemented triangle rasterization by testing sample points
+inside the triangle. For each triangle, I first compute its bounding box so
+that I only check pixels that could possibly be covered by the triangle.
+This avoids checking every pixel on the screen.
+</p>
+
+<p>
+For each pixel inside the bounding box, I test the pixel center against the
+three edges of the triangle. If the point lies on the same side of all three
+edges, then the sample is inside the triangle, and the pixel is filled with
+the triangle's color. The implementation also works regardless of whether
+the triangle vertices are listed clockwise or counterclockwise.
+</p>
+
+<figure>
+    <img src="assets/screenshot_9-25_0-57-54.png" style="width:70%">
+    <figcaption>
+        basic/test4.svg at sample rate 1 with the pixel inspector focused on
+        the thin red triangle.
+    </figcaption>
+</figure>
 		<p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
 		<div style="display: flex; flex-direction: column; align-items: center;">
 			<table style="width: 100%; text-align: center; border-collapse: collapse;">

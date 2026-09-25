@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="500.0px" height="500.0px" viewBox="0 0 500 500" enable-background="new 0 0 500 500"
+	 xml:space="preserve">
+
+<g transform="translate(250 210)">
+
+    <!-- Pedestal -->
+    <g transform="translate(0 205)">
+      <g transform="scale(1.8 .3)">
+        <polygon fill="#3B3B3B" points="-50,-50 50,-50 -50,50"/>
+        <polygon fill="#3B3B3B" points="-50,50 50,-50 50,50"/>
+      </g>
+    </g>
+
+    <!-- Torso leaning forward -->
+    <g transform="rotate(12)">
+      <g transform="scale(.85 1.05)">
+        <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+        <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+      </g>
+    </g>
+
+    <!-- Larger head leaning forward -->
+    <g transform="translate(32 -105)">
+      <g transform="rotate(10)">
+        <g transform="scale(.75 .75)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Left thigh -->
+    <g transform="translate(-43 76)">
+      <g transform="rotate(55)">
+        <g transform="scale(.24 .75)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Left lower leg -->
+    <g transform="translate(-75 145)">
+      <g transform="rotate(-8)">
+        <g transform="scale(.24 .8)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Left foot -->
+    <g transform="translate(-60 188)">
+      <g transform="rotate(-75)">
+        <g transform="scale(.2 .45)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Right thigh -->
+    <g transform="translate(43 76)">
+      <g transform="rotate(-55)">
+        <g transform="scale(.24 .75)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Right lower leg -->
+    <g transform="translate(75 145)">
+      <g transform="rotate(8)">
+        <g transform="scale(.24 .8)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Right foot -->
+    <g transform="translate(60 188)">
+      <g transform="rotate(75)">
+        <g transform="scale(.2 .45)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Arm extending from shoulder toward right knee -->
+    <g transform="translate(53 22)">
+      <g transform="rotate(-18)">
+        <g transform="scale(.22 1)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Forearm extending from knee toward chin -->
+    <g transform="translate(52 9)">
+      <g transform="rotate(-16)">
+        <g transform="scale(.2 1.25)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Hand under chin -->
+    <g transform="translate(34 -52)">
+      <g transform="rotate(15)">
+        <g transform="scale(.24 .24)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Other upper arm -->
+    <g transform="translate(-53 22)">
+      <g transform="rotate(20)">
+        <g transform="scale(.22 1)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Other forearm resting across the lap -->
+    <g transform="translate(-42 83)">
+      <g transform="rotate(-65)">
+        <g transform="scale(.2 .65)">
+          <polygon fill="#8B5E3C" points="-50,-50 50,-50 -50,50"/>
+          <polygon fill="#8B5E3C" points="-50,50 50,-50 50,50"/>
+        </g>
+      </g>
+    </g>
+
+  </g>
+</svg>

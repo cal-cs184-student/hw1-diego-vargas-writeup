@@ -226,68 +226,84 @@ while bilinear filtering smooths variation inside the texture itself.
   </figure>
 
 </div>
-		<h2>Task 6: "Level Sampling" with mipmaps for texture mapping</h2>
+	<h2>Task 6: "Level Sampling" with mipmaps for texture mapping</h2>
 
 <p>
-For Task 6, I implemented mipmap level sampling. The texture coordinate
-derivatives are estimated in the x and y directions, and these derivatives
-are used to determine the size of the texture footprint. From this footprint,
-I compute an appropriate mipmap level.
+For Task 6, I implemented mipmap level sampling. I estimate how quickly the
+texture coordinates change in the x and y directions, and I use those
+derivatives to compute the size of the texture footprint. That footprint is
+then used to select an appropriate mipmap level.
 </p>
 
 <p>
-With level-zero sampling, the renderer always uses the highest-resolution
-texture level. Nearest-level sampling chooses the closest mipmap level based
-on the computed footprint. Linear level sampling blends between the two
-closest mipmap levels, which produces smoother transitions between levels.
+With level-zero sampling, the renderer always uses mip level 0, which is the
+highest-resolution texture. With nearest-level sampling, the renderer chooses
+the mipmap level closest to the computed level. Using lower-resolution mipmaps
+when the texture is minified helps reduce aliasing.
 </p>
 
 <p>
-The images below compare the three level-sampling methods while keeping
-nearest pixel sampling and a supersample rate of 1.
+The images below compare level-zero and nearest-level sampling using both
+nearest-neighbor and bilinear pixel sampling. All four images use a supersample
+rate of 1.
 </p>
 
-<figure>
-  <img src="assets/screenshot_9-25_16-43-29.png" style="width:70%">
-  <figcaption>
-    Level-zero sampling with nearest pixel sampling and sample rate 1.
-  </figcaption>
-</figure>
+<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:25px;">
 
-<figure>
-  <img src="assets/screenshot_9-25_16-45-6.png" style="width:70%">
-  <figcaption>
-    Nearest mipmap-level sampling with nearest pixel sampling and sample rate 1.
-  </figcaption>
-</figure>
+  <figure style="width:45%">
+    <img src="assets/screenshot_9-25_16-43-29.png" style="width:100%">
+    <figcaption>
+      L_ZERO + P_NEAREST
+    </figcaption>
+  </figure>
 
-<figure>
-  <img src="assets/screenshot_9-25_16-46-36.png" style="width:70%">
-  <figcaption>
-    Linear mipmap-level interpolation with nearest pixel sampling and sample rate 1.
-  </figcaption>
-</figure>
+  <figure style="width:45%">
+    <img src="assets/screenshot_9-25_16-51-53.png" style="width:100%">
+    <figcaption>
+      L_ZERO + P_LINEAR
+    </figcaption>
+  </figure>
+
+  <figure style="width:45%">
+    <img src="assets/screenshot_9-25_16-45-6.png" style="width:100%">
+    <figcaption>
+      L_NEAREST + P_NEAREST
+    </figcaption>
+  </figure>
+
+  <figure style="width:45%">
+    <img src="assets/screenshot_9-25_16-52-28.png" style="width:100%">
+    <figcaption>
+      L_NEAREST + P_LINEAR
+    </figcaption>
+  </figure>
+
+</div>
 
 <p>
-Level-zero sampling preserves the most detail but can show more aliasing when
-the texture is minified. Nearest-level sampling reduces this aliasing by using
-a lower-resolution mipmap when appropriate. Linear level sampling further
-smooths the transition between mipmap levels by interpolating between adjacent
-levels.
+Pixel sampling, level sampling, and supersampling all reduce aliasing in
+different ways. Nearest pixel sampling is the fastest and uses the least
+computation, but it can look blocky or jagged. Bilinear pixel sampling performs
+more work because it blends four texels, but it produces smoother results.
+</p>
+
+<p>
+Level sampling adds extra memory usage because the renderer must store multiple
+mipmap levels. However, choosing a lower-resolution mipmap can improve image
+quality when textures are minified and can reduce high-frequency aliasing.
+Nearest-level sampling is cheaper than interpolating between two mipmap levels,
+while linear level interpolation produces smoother transitions between levels.
+</p>
+
+<p>
+Increasing the samples per pixel gives stronger antialiasing along geometry
+edges, but it also increases computation and the size of the sample buffer.
+For example, a sample rate of 16 requires sixteen samples for every output
+pixel. This gives better antialiasing but is more expensive than using a sample
+rate of 1.
 </p>
 		<h2>(Optional) Task 7: Extra Credit - Draw Something Creative!</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-		<h2>Additional Notes (please remove)</h2>
-		<ul>
-			<li>You can also add code if you'd like as so: <code>code code code</code></li>
-			<li>If you'd like to add math equations, 
-				<ul>
-					<li>You can write inline equations like so: \( a^2 + b^2 = c^2 \)</li>
-					<li>You can write display equations like so: \[ a^2 + b^2 = c^2 \]</li>
-				</ul>
-			</li>
-		</ul>
 		</div>
 	</body>
 </html>

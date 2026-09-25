@@ -183,8 +183,49 @@ color wheel.
     </figcaption>
 </figure>
 		<h2>Task 5: "Pixel sampling" for texture mapping</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+<p>
+For Task 5, I implemented nearest-neighbor and bilinear texture sampling.
+Nearest-neighbor sampling selects the closest texel to the requested texture
+coordinate, while bilinear sampling interpolates between the four surrounding
+texels to produce a smoother result.
+</p>
+
+<p>
+Nearest-neighbor sampling is simpler and faster, but it can produce more
+visible aliasing and blocky artifacts. Bilinear sampling performs additional
+interpolation and generally produces smoother texture results.
+</p>
+
+<p>
+The images below compare nearest and bilinear pixel sampling at sample rates
+1 and 16. Increasing the supersample rate reduces aliasing around the edges,
+while bilinear filtering smooths variation inside the texture itself.
+</p>
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+
+  <figure>
+    <img src="assets/screenshot_9-25_16-26-50.png" style="width:300px">
+    <figcaption>Nearest sampling, sample rate 1</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/screenshot_9-25_16-27-10.png" style="width:300px">
+    <figcaption>Nearest sampling, sample rate 16</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/screenshot_9-25_16-26-10.png" style="width:300px">
+    <figcaption>Bilinear sampling, sample rate 1</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/screenshot_9-25_16-26-23.png" style="width:300px">
+    <figcaption>Bilinear sampling, sample rate 16</figcaption>
+  </figure>
+
+</div>
 		<h2>Task 6: "Level Sampling" with mipmaps for texture mapping</h2>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 

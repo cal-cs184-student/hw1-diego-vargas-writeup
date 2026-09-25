@@ -83,8 +83,46 @@ the triangle vertices are listed clockwise or counterclockwise.
 </figure>
 		
 		<h2>Task 2: Antialiasing by Supersampling</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			<p>
+In Task 2, I implemented supersampling to reduce aliasing along triangle edges.
+Instead of using only one sample per pixel, the rasterizer stores multiple
+sub-pixel samples for each pixel and averages them together when producing the
+final framebuffer.
+</p>
 
+<p>
+For each triangle, I test the sub-pixel sample locations to determine whether
+they are inside the triangle. The colors of all the samples belonging to one
+pixel are then averaged together. This produces partially covered pixels along
+triangle boundaries, which makes diagonal edges and thin triangles appear
+smoother.
+</p>
+
+<p>
+The images below show basic/test4.svg at sample rates 1, 4, and 16. As the
+sample rate increases, the thin red triangle becomes less jagged and its edges
+appear smoother in the pixel inspector.
+</p>
+
+<div style="display: flex; flex-direction: row; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <figure>
+        <img src="assets/screenshot_9-25_15-4-11.png" style="width:250px">
+        <figcaption>Sample rate 1 per pixel</figcaption>
+    </figure>
+
+    <figure>
+        <img src="assets/screenshot_9-25_15-4-51.png" style="width:250px">
+        <figcaption>Sample rate 4 per pixel</figcaption>
+    </figure>
+
+    <figure>
+        <img src="assets/screenshot_9-25_15-4-32.png" style="width:250px">
+        <figcaption>Sample rate 16 per pixel</figcaption>
+    </figure>
+
+</div>
+			
 		<h2>Task 3: Transforms</h2>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 

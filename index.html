@@ -63,7 +63,9 @@ converted into pixels on the screen.
 For Task 1, I implemented triangle rasterization by testing sample points
 inside the triangle. For each triangle, I first compute its bounding box so
 that I only check pixels that could possibly be covered by the triangle.
-This avoids checking every pixel on the screen.
+This avoids checking every pixel on the screen. Because my algorithm only
+tests samples inside the triangle's bounding box, its runtime is no worse
+than an algorithm that checks every sample within that bounding box.
 </p>
 
 <p>
@@ -202,7 +204,14 @@ The images below compare nearest and bilinear pixel sampling at sample rates
 1 and 16. Increasing the supersample rate reduces aliasing around the edges,
 while bilinear filtering smooths variation inside the texture itself.
 </p>
-
+			
+<p>
+The difference between nearest-neighbor and bilinear sampling is most noticeable
+when a texture coordinate falls between texel centers or when neighboring texels
+have very different colors. Nearest-neighbor chooses only one texel, which can
+make the result appear blocky or abrupt. Bilinear sampling blends the four nearby
+texels, so transitions are smoother, especially when the texture is magnified.
+</p>
 <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
 
   <figure>
@@ -237,64 +246,69 @@ then used to select an appropriate mipmap level.
 
 <p>
 With level-zero sampling, the renderer always uses mip level 0, which is the
-highest-resolution texture. With nearest-level sampling, the renderer chooses
-the mipmap level closest to the computed level. Using lower-resolution mipmaps
-when the texture is minified helps reduce aliasing.
+highest-resolution texture. Nearest-level sampling chooses the mipmap level
+closest to the computed level. Linear level sampling blends between the two
+nearest mipmap levels, which produces smoother transitions between levels.
 </p>
 
 <p>
 The images below compare level-zero and nearest-level sampling using both
 nearest-neighbor and bilinear pixel sampling. I used my own PNG texture for
-this comparison, and all four images use a supersample rate of 1.
+this comparison, and all four images use a supersample rate of 1. I also
+implemented linear level sampling, which interpolates between adjacent mipmap
+levels to provide smoother transitions between levels.
 </p>
 
 <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:25px;">
 
   <figure style="width:45%">
-  <img src="assets/screenshot_9-25_17-13-23.png" style="width:100%">
-  <figcaption>L_ZERO + P_NEAREST</figcaption>
-</figure>
+    <img src="assets/screenshot_9-25_17-13-23.png" style="width:100%">
+    <figcaption>L_ZERO + P_NEAREST</figcaption>
+  </figure>
 
-<figure style="width:45%">
-  <img src="assets/screenshot_9-25_17-13-28.png" style="width:100%">
-  <figcaption>L_ZERO + P_LINEAR</figcaption>
-</figure>
+  <figure style="width:45%">
+    <img src="assets/screenshot_9-25_17-13-28.png" style="width:100%">
+    <figcaption>L_ZERO + P_LINEAR</figcaption>
+  </figure>
 
-<figure style="width:45%">
-  <img src="assets/screenshot_9-25_17-13-34.png" style="width:100%">
-  <figcaption>L_NEAREST + P_NEAREST</figcaption>
-</figure>
+  <figure style="width:45%">
+    <img src="assets/screenshot_9-25_17-13-34.png" style="width:100%">
+    <figcaption>L_NEAREST + P_NEAREST</figcaption>
+  </figure>
 
-<figure style="width:45%">
-  <img src="assets/screenshot_9-25_17-13-32.png" style="width:100%">
-  <figcaption>L_NEAREST + P_LINEAR</figcaption>
-</figure>
+  <figure style="width:45%">
+    <img src="assets/screenshot_9-25_17-13-32.png" style="width:100%">
+    <figcaption>L_NEAREST + P_LINEAR</figcaption>
+  </figure>
 
 </div>
 
 <p>
-Pixel sampling, level sampling, and supersampling all reduce aliasing in
-different ways. Nearest pixel sampling is the fastest and uses the least
-computation, but it can look blocky or jagged. Bilinear pixel sampling performs
-more work because it blends four texels, but it produces smoother results.
+Pixel sampling, level sampling, and supersampling reduce aliasing in different
+ways. Nearest pixel sampling requires the least computation because it reads
+only one texel, but it can produce blocky or jagged results. Bilinear pixel
+sampling reads and blends four neighboring texels, so it requires more
+computation but usually produces smoother textures.
 </p>
 
 <p>
-Level sampling adds extra memory usage because the renderer must store multiple
-mipmap levels. However, choosing a lower-resolution mipmap can improve image
-quality when textures are minified and can reduce high-frequency aliasing.
-Nearest-level sampling is cheaper than interpolating between two mipmap levels,
-while linear level interpolation produces smoother transitions between levels.
+Level sampling uses mipmaps to reduce aliasing when a texture is viewed at a
+smaller size. Level-zero sampling always uses the highest-resolution texture,
+which preserves detail but can produce high-frequency aliasing when the texture
+is minified. Nearest-level sampling chooses a mipmap resolution that better
+matches the texture footprint, reducing aliasing. Linear level sampling can
+blend between adjacent mipmap levels for smoother transitions, but it requires
+additional texture lookups and computation. Mipmapping also requires extra
+memory because several lower-resolution copies of the texture must be stored.
 </p>
 
 <p>
-Increasing the samples per pixel gives stronger antialiasing along geometry
-edges, but it also increases computation and the size of the sample buffer.
-For example, a sample rate of 16 requires sixteen samples for every output
-pixel. This gives better antialiasing but is more expensive than using a sample
-rate of 1.
+Supersampling reduces aliasing along geometric edges by taking multiple samples
+inside each output pixel and averaging them together. Increasing the sample
+rate improves edge quality, but it also increases both computation and sample
+buffer memory. For example, a sample rate of 16 stores and processes sixteen
+samples for each output pixel, so it is more expensive than a sample rate of 1.
 </p>
-	
 		</div>
 	</body>
 </html>
